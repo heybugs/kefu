@@ -56,7 +56,7 @@
         <div v-for="item in calledList" :key="item.id">
           <div><strong>呼叫</strong> {{item.call_date}}</div>
           <el-row :gutter="20">
-            <el-col :span="6">所属业务：--</el-col>
+            <el-col :span="6" :offset="2">所属业务：--</el-col>
             <el-col :span="6">业务类型：--</el-col>
             <el-col :span="6">处理状态：--</el-col>
             <el-col :span="6">备注说明：--</el-col>

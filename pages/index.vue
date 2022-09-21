@@ -84,8 +84,11 @@ export default {
     };
   },
   methods: {
-    detailClick(id) {
-      console.log(id);
+    detailClick(item) {
+      console.log(item);
+      this.$router.push({
+        path:`/detail?id=${item.id}`
+      })
     },
     deleteClick(id) {
       this.$message.error("您的账号暂无权限删除！");

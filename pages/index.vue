@@ -1,15 +1,34 @@
 <template>
   <div>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header id="header">
+        <el-image style="height: 41px;width:46px" src="/img/logo.png"></el-image>
+        <div class="right">
+          <div class="box" style="width:120px">
+            <el-image style="height: 40px;width:40px;" src="/img/banner-logo-3.png"></el-image>
+            <p>客服工作台</p>
+          </div>
+          <div class="box">
+            <el-avatar src="/img/avatar38.png"></el-avatar>
+            <el-dropdown>
+              <span class="el-dropdown-link">
+                <span class="w-font">王梅</span><i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
+        </div>
+      </el-header>
       <el-container>
-        <el-aside width="60px">
-          <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <el-aside width="60px" style="background: #33435b;">
+          <el-menu default-active="1" class="el-menu-vertical-demo" background-color="#33435b" text-color="#fff" active-text-color="#ffd04b">
             <el-menu-item index="1">
-              <i class="el-icon-location"></i>
+              <i class="el-icon-house"></i>
             </el-menu-item>
             <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
+              <i class="el-icon-user"></i>
               <span slot="title"></span>
             </el-menu-item>
             <el-menu-item index="3">
@@ -86,28 +105,50 @@ export default {
   methods: {
     detailClick(item) {
       console.log(item);
-      this.$router.push({
-        path:`/detail?id=${item.id}`
-      })
+      // this.$router.push({
+      //   path: `/detail?id=${item.id}`,
+      // });
+      let routeInfo = this.$router.resolve({ path: `/detail?id=${item.id}` });
+      window.open(routeInfo.href, "_blank");
     },
     deleteClick(id) {
       this.$message.error("您的账号暂无权限删除！");
     },
     handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      }
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    },
   },
 };
 </script>
 
 <style>
+body {
+  margin: 0;
+  color: #909399;
+}
 .el-header {
-  background-color: #b3c0d1;
+  background-color: #09aeb0;
   color: #333;
   text-align: center;
   line-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.right {
+  display: flex;
+  align-items: center;
+  width: 240px;
+  justify-content: space-between;
+}
+.box {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  justify-content: space-between;
+  font-size: 14px;
 }
 </style>
